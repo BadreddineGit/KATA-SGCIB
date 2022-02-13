@@ -1,0 +1,35 @@
+<div class="container" style="margin: 5%;">
+
+    <h4>Account number : <span style="font-weight: 300">{{account}}</span> </h4>
+    <h4>Balance : <span style="font-weight: 300">{{balance}}</span></h4>
+
+    <form [formGroup]="transactionFormGroup" style="margin-top: 3%;">
+        <div class="form-group">
+            <label class="sr-only" for="">Transaction Amount</label>
+            <input type="number" name="Amount" class="form-control" value="" min="5" formControlName="amount">
+        </div>
+
+        <button class="btn btn-primary" (click)="onCreditAccount()" style="margin: 1%;">Credit</button>
+        <button class="btn btn-danger" (click)="onDebitAccount()" style="margin: 1%;">Debit</button>
+    </form>
+
+    <table class="table" style="margin-top: 2%;">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Account</th>
+                <th scope="col">Transaction Date</th>
+                <th scope="col">Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let transction of transactions">
+                <th scope="row">{{transction.transactionId}}</th>
+                <td>{{transction.accountNumber}}</td>
+                <td>{{transction.transactionDate | date:'medium'}}</td>
+                <td>{{transction.amount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
